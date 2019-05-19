@@ -12,6 +12,9 @@
       <li class="nav-item">
         <a href="/contact" class="nav-link">Contact</a>
       </li>
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+        <p class="nav-link" (click)="logout()" >Logout</p>
+      </li>
     </ul>
   </div>
 </nav>
