@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     }
     this.AuthService.login(this.loginForm.value);
     this.router.navigateByUrl('/friend');
+    //this.router.navigate('/');
   }
 
 }
