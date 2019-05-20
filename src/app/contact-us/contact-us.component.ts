@@ -32,4 +32,15 @@ export class ContactUsComponent implements OnInit {
     this.contacts.push(contactData);
   }
 
+  getFormValue(){
+    this.isSubmitted = true;
+    let username = this.contactForm.controls.username.value;
+    let email = this.contactForm.controls.email.value;
+    let pesan = this.contactForm.controls.pesan.value;
+    this.addContact(username, email, pesan);
+    if (this.contactForm.invalid) {
+      return;
+    }
+  }
+
 }

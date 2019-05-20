@@ -2,23 +2,32 @@
   <div class="my-auto">
     <h2 class="mb-4">Contact Me</h2>
   </div>
-  <form [formGroup]="contactForm" class="contact-form d-flex flex-column align-items-center">
+  <form [formGroup]="contactForm" class="contact-form d-flex flex-column align-items-center" (ngSubmit)="getFormValue()">
       <div class="form-group w-50">
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
-              <input type="text" placeholder="Username" class="form-control" #username name="username">
+              <input type="text" placeholder="Username" class="form-control" formControlName="username" name="username">
           </p>
+          <div *ngIf="isSubmitted && formControls.username.errors">
+            <div *ngIf="formControls.username.errors.required" >Username is required </div>
+          </div>
         </div>
     <div class="form-group w-50">
       <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-        <input type="email" placeholder="Email" #email class="form-control" name="email">
+        <input type="email" placeholder="Email" class="form-control" formControlName="email" name="email">
       </p>
+      <div *ngIf="isSubmitted && formControls.email.errors">
+        <div *ngIf="formControls.email.errors.required" >Email is required </div>
+      </div>
     </div>
     <div class="form-group w-50">
       <p [ngClass]="{ 'has-error': isSubmitted && formControls.pesan.errors }" >
-        <textarea name="pesan" id="pesan" #pesan cols="30" rows="7" class="form-control" type="text" placeholder="Pesan"></textarea>
+        <textarea name="pesan" id="pesan"  cols="30" rows="7" formControlName="pesan" class="form-control" type="text" placeholder="Pesan"></textarea>
       </p>
+      <div *ngIf="isSubmitted && formControls.pesan.errors">
+        <div *ngIf="formControls.pesan.errors.required" >Pesan is required </div>
+      </div>
     </div>
-      <button (click)="addContact(username.value, email.value, pesan.value)" class="btn btn-submit btn-info w-50" type="submit">Submit</button>
+      <button class="btn btn-submit btn-info w-50" type="submit">Submit</button>
   </form>
   <br>
   <div class=" align-items-center">
