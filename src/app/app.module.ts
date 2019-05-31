@@ -11,6 +11,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FriendComponent } from './friend/friend.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { FilterPipe } from './friend/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     ContactUsComponent,
     FriendComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

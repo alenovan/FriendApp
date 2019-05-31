@@ -20,14 +20,15 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-  
+
   get formControls() { return this.loginForm.controls; }
 
   login() {
+    console.log(this.loginForm.value);
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
       return;
