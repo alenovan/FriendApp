@@ -4,9 +4,7 @@
   </div>
   <form [formGroup]="contactForm" class="contact-form d-flex flex-column align-items-center" (ngSubmit)="getFormValue()">
       <div class="form-group w-50">
-          <p [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
-              <input type="text" placeholder="Username" class="form-control" formControlName="username" name="username">
-          </p>
+          <input type="text" placeholder="Username" class="form-control" [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }" formControlName="username" name="username">
           <div *ngIf="isSubmitted && formControls.username.errors">
             <div *ngIf="formControls.username.errors.required" >Username is required </div>
           </div>
@@ -17,6 +15,7 @@
       </p>
       <div *ngIf="isSubmitted && formControls.email.errors">
         <div *ngIf="formControls.email.errors.required" >Email is required </div>
+        <div *ngIf="formControls.email.errors.pattern" >Enter a valid email</div>
       </div>
     </div>
     <div class="form-group w-50">

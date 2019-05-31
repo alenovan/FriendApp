@@ -20,7 +20,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.contactForm = this.formBuilder.group({
       username: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       pesan: ['', Validators.required]
     });
   }
@@ -37,10 +37,11 @@ export class ContactUsComponent implements OnInit {
     let username = this.contactForm.controls.username.value;
     let email = this.contactForm.controls.email.value;
     let pesan = this.contactForm.controls.pesan.value;
-    this.addContact(username, email, pesan);
+    //this.addContact(username, email, pesan);
     if (this.contactForm.invalid) {
       return;
     }
+    this.addContact(username, email, pesan);
   }
 
 }
